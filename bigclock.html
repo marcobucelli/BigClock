@@ -8,22 +8,21 @@
 
   <style>
     #clock {
-        font-size: 30vw;
+        font-size: 90vh;
+        text-align: center;
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-style: normal;
-        padding-left: 10%;
+        font-weight: 600;
     }
-    #ora { font-weight: 600; }
-    #minuti { font-weight: 300; }
-    #secondi { font-weight: 300; font-size: 5vw; color: #666; }
+    #secondi { transition: color 1 sec linear; }
 
   </style>
 </head>
 <body>
     
     <div id="clock">
-        <span id="ora">12</span><span id="minuti">34</span><span id="secondi">54</span>
+        <span id="ora">12</span><span id="secondi">:</span><span id="minuti">34</span>
     </div>
     
 
@@ -32,14 +31,14 @@
         const ora = new Date();
         const ore = ora.getHours().toString().padStart(2, '0');
         const minuti = ora.getMinutes().toString().padStart(2, '0');
-        const secondi = ora.getSeconds().toString().padStart(2, '0');
 
         document.getElementById('ora').textContent = `${ore}`;
         document.getElementById('minuti').textContent = `${minuti}`;
 
-        let secondiString = ".".repeat(secondi/10)
+        const secondi = ora.getSeconds();
+        const colore = 120 + secondi*2;
 
-        document.getElementById('secondi').textContent = `${secondi}`;
+        document.getElementById("secondi").style.color = `hsl(${colore}, 100%, 30%)`;
 
     }
 
