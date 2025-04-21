@@ -9,10 +9,10 @@
   <style>
     #clock {
         font-size: 90vh;
+        font-variant: small-caps;
         text-align: center;
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
-        font-style: normal;
         font-weight: 600;
     }
     #secondi { transition: color 1 sec linear; }
@@ -36,9 +36,9 @@
         document.getElementById('minuti').textContent = `${minuti}`;
 
         const secondi = ora.getSeconds();
-        const colore = 120 + secondi*2;
+        const colore = 60 + secondi*3;
 
-        document.getElementById("secondi").style.color = `hsl(${colore}, 100%, 30%)`;
+        document.getElementById("secondi").style.color = `hsl(${colore}, 50%, 50%)`;
 
     }
 
