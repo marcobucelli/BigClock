@@ -7,59 +7,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
 
   <style>
-    .fullscreen {
+    #clock {
         font-size: 30vw;
         text-align: center;
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-style: normal;
+        float:left;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-right: 5vw;
     }
     #ora { font-weight: 600; }
-    #minuti { 
-        font-weight: 300; 
-        transition: color 3s linear;
+    #minuti { font-weight: 300; }
+
+    #contenitore {
+      width: 2vw;
+      height: 30vw;
+      float:left;
+      padding: 1px;
+      position: relative;
+    }
+
+    #barra_secondi {
+      height: 100%;
+      background-color: #aaa;
+      width: 2vw;
+      transition: all 1s linear;
+      margin: 1px;
+      position: absolute;
+    bottom: 0;
+
     }
 
 
   </style>
 </head>
 <body>
-  <div class="fullscreen" id="clock"> <span id="ora">12</span><span id="minuti">34</span></div>
-  
+    
+    <div id="clock"> <span id="ora">12</span><span id="minuti">34</span></div>
+    <div id="contenitore">     <div id="barra_secondi"></div>  </div>
+    
 
   <script>
     function aggiornaOra() {
         const ora = new Date();
         const ore = ora.getHours().toString().padStart(2, '0');
         const minuti = ora.getMinutes().toString().padStart(2, '0');
-        const secondi = ora.getSeconds();
 
         document.getElementById('ora').textContent = `${ore}`;
         document.getElementById('minuti').textContent = `${minuti}`;
 
-        let colore;
-        if (secondi < 6) {
-            colore = '#111';
-        } else if (secondi < 12) {
-            colore = '#222';
-        } else if (secondi < 18) {
-            colore = '#333';
-        } else if (secondi < 24) {
-            colore = '#444';
-        } else if (secondi < 30) {
-            colore = '#555';
-        } else if (secondi < 36) {
-            colore = '#666';
-        } else if (secondi < 42) {
-            colore = '#777';
-        } else if (secondi < 48) {
-            colore = '#888';
-        } else if (secondi < 54) {
-            colore = '#999';
-        } else {
-            colore = '#AAA';
-        } 
-        document.getElementById('minuti').style.color = colore;
+        const secondi = ora.getSeconds();
+        const percentuale = ((60 - secondi) / 60) * 100;
+        barra_secondi.style.height = percentuale + '%';
     }
 
     aggiornaOra();
