@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
+
+  <style>
+    .fullscreen {
+        font-size: 30vw;
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+    #ora { font-weight: 600; }
+    #minuti { 
+        font-weight: 300; 
+        transition: color 3s linear;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="fullscreen" id="clock"> <span id="ora">12</span><span id="minuti">34</span></div>
+  
+
+  <script>
+    function aggiornaOra() {
+        const ora = new Date();
+        const ore = ora.getHours().toString().padStart(2, '0');
+        const minuti = ora.getMinutes().toString().padStart(2, '0');
+        const secondi = ora.getSeconds();
+
+        document.getElementById('ora').textContent = `${ore}`;
+        document.getElementById('minuti').textContent = `${minuti}`;
+
+        let colore;
+        if (secondi < 6) {
+            colore = '#111';
+        } else if (secondi < 12) {
+            colore = '#222';
+        } else if (secondi < 18) {
+            colore = '#333';
+        } else if (secondi < 24) {
+            colore = '#444';
+        } else if (secondi < 30) {
+            colore = '#555';
+        } else if (secondi < 36) {
+            colore = '#666';
+        } else if (secondi < 42) {
+            colore = '#777';
+        } else if (secondi < 48) {
+            colore = '#888';
+        } else if (secondi < 54) {
+            colore = '#999';
+        } else {
+            colore = '#AAA';
+        } 
+        document.getElementById('minuti').style.color = colore;
+    }
+
+    aggiornaOra();
+    setInterval(aggiornaOra, 1000);
+  </script>
+</body>
+</html>
