@@ -2,11 +2,23 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="3600" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
 
   <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000000;
+        color: #ffffff;
+    }
+
     #clock {
         font-size: 90vh;
         font-variant: small-caps;
@@ -15,14 +27,17 @@
         font-optical-sizing: auto;
         font-weight: 600;
     }
-    #secondi { transition: color 1 sec linear; }
+
+    #minuti { transition: all 500ms linear; font-weight: 400; }
+    #secondi { transition: all 1000ms linear; }
 
   </style>
 </head>
 <body>
     
     <div id="clock">
-        <span id="ora">12</span><span id="secondi">:</span><span id="minuti">34</span>
+        <!-- <span id="ora">12</span><span id="secondi">:</span><span id="minuti">34</span> -->
+        <span id="ora">12</span><span id="minuti">34</span>
     </div>
     
 
@@ -38,8 +53,8 @@
         const secondi = ora.getSeconds();
         const colore = 60 + secondi*3;
 
-        document.getElementById("secondi").style.color = `hsl(${colore}, 50%, 50%)`;
-
+        // document.getElementById("secondi").style.color = `hsl(${colore}, 50%, 50%)`;
+        document.getElementById("minuti").style.color = `hsl(${colore}, 50%, 75%)`;
     }
 
     aggiornaOra();
