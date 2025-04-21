@@ -9,44 +9,22 @@
   <style>
     #clock {
         font-size: 30vw;
-        text-align: center;
         font-family: "Montserrat", sans-serif;
         font-optical-sizing: auto;
         font-style: normal;
-        float:left;
-        margin-top: 0;
-        margin-bottom: 0;
-        margin-right: 5vw;
+        padding-left: 10%;
     }
     #ora { font-weight: 600; }
     #minuti { font-weight: 300; }
-
-    #contenitore {
-      width: 2vw;
-      height: 30vw;
-      float:left;
-      padding: 1px;
-      position: relative;
-    }
-
-    #barra_secondi {
-      height: 100%;
-      background-color: #aaa;
-      width: 2vw;
-      transition: all 1s linear;
-      margin: 1px;
-      position: absolute;
-    bottom: 0;
-
-    }
-
+    #secondi { font-weight: 300; font-size: 5vw; color: #666; }
 
   </style>
 </head>
 <body>
     
-    <div id="clock"> <span id="ora">12</span><span id="minuti">34</span></div>
-    <div id="contenitore">     <div id="barra_secondi"></div>  </div>
+    <div id="clock">
+        <span id="ora">12</span><span id="minuti">34</span><span id="secondi">54</span>
+    </div>
     
 
   <script>
@@ -54,13 +32,15 @@
         const ora = new Date();
         const ore = ora.getHours().toString().padStart(2, '0');
         const minuti = ora.getMinutes().toString().padStart(2, '0');
+        const secondi = ora.getSeconds().toString().padStart(2, '0');
 
         document.getElementById('ora').textContent = `${ore}`;
         document.getElementById('minuti').textContent = `${minuti}`;
 
-        const secondi = ora.getSeconds();
-        const percentuale = ((60 - secondi) / 60) * 100;
-        barra_secondi.style.height = percentuale + '%';
+        let secondiString = ".".repeat(secondi/10)
+
+        document.getElementById('secondi').textContent = `${secondi}`;
+
     }
 
     aggiornaOra();
