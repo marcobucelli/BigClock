@@ -44,7 +44,7 @@
   <script>
     function aggiornaOra() {
         const ora = new Date();
-        const ore = ora.getHours().toString().padStart(2, '0');
+        const ore = ora.getHours() // .toString().padStart(2, '0');
         const minuti = ora.getMinutes().toString().padStart(2, '0');
 
         document.getElementById('ora').textContent = `${ore}`;
